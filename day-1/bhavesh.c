@@ -1,1 +1,1 @@
-hi beby how
+printf("hellow world");
