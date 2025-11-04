@@ -1,0 +1,309 @@
+
+**1)**
+
+```c
+#include<stdio.h>
+int main()
+{
+  int a;
+  a = 'a' > 'A';
+  printf("%d",a);
+  return 0;
+}
+```
+
+**Output:** `1`
+**Explanation:** `'a'` = 97, `'A'` = 65. Since 97 > 65 → condition true → prints `1`.
+
+---
+
+### **2)**
+
+```c
+int main() {
+int a = 3;
+int b = 4;
+int result = (a += b) * (b -= 2);
+printf("result = %d\n", result);
+return 0;
+}
+```
+
+**Output:** `result = 42`
+**Explanation:**
+`a += b → a = 7`
+`b -= 2 → b = 2`
+`result = 7 * 6 = 42`.
+
+---
+
+### **3)**
+
+```c
+#include<stdio.h>
+int main() {
+int a = 5, b = 10, c = 15;
+int result = !(a <= b) && !(b != c) && !(c >= a);
+printf("result = %d\n", result);
+return 0;
+}
+```
+
+**Output:** `result = 0`
+**Explanation:**
+`!(a <= b)` → `!(1)` → `0`
+Since first condition is false, full expression → `0`.
+
+---
+
+### **4)**
+
+```c
+#include<stdio.h>
+int main() {
+int a = 10;
+int b = 15;
+int c = a++ + b--;
+printf("a = %d, b = %d, c = %d\n", a, b, c);
+return 0;
+}
+```
+
+**Output:** `a = 11, b = 14, c = 25`
+**Explanation:**
+`a++` uses old `a=10`, then a=11.
+`b--` uses old `b=15`, then b=14.
+`c = 10 + 15 = 25`.
+
+---
+
+### **5)**
+
+```c
+#include<stdio.h>
+int main()
+{
+int a;
+a = 1, 2, 3;
+printf("%d", a);
+return 0;
+}
+```
+
+**Output:** `1`
+**Explanation:**
+Comma (`,`) has low precedence. So only first assignment `a=1` happens.
+
+---
+
+### **6)**
+
+```c
+#include <stdio.h>
+int main()
+{
+    int a = 5, b = 5, c = 10, result;
+
+    result = (a == b) && (c > b);
+    printf(" %d \n", result);
+
+    result = (a == b) && (c < b);
+    printf(" %d \n", result);
+
+    result = (a == b) || (c < b);
+    printf(" %d \n", result);
+
+    return 0;
+}
+```
+
+**Output:**
+
+```
+1
+0
+1
+```
+
+**Explanation:**
+`(a==b)&&(c>b)` → 1
+`(a==b)&&(c<b)` → 0
+`(a==b)||(c<b)` → 1
+
+---
+
+### **7)**
+
+```c
+#include <stdio.h>
+void main()
+{   
+	printf("%d",printf("Hello\n"));
+}
+```
+
+**Output:**
+
+```
+Hello
+6
+```
+
+**Explanation:**
+Inner `printf("Hello\n")` prints `Hello` and returns **6** (number of characters printed).
+Outer `printf` prints `6`.
+
+---
+
+### **8)**
+
+```c
+int x = 0, y = -1, z = 5;
+```
+
+**Answer:** ✅ **(a) (x || y) && z**
+**Explanation:**
+`x || y` → true (1), so `(1 && 5)` → true.
+Other options don’t all evaluate true.
+
+---
+
+### **9)**
+
+```c
+#include <stdio.h>
+int main() {
+    int a = 5, b = 3, c, d;
+    c = a < b && a > 2;
+    d = a < b || b > 2;
+    printf("%d %d %d %d", a, b, c, d);
+    return 0;
+}
+```
+
+**Output:** `5 3 0 1`
+**Explanation:**
+`a < b` → false → `c=0`.
+`a < b || b > 2` → true → `d=1`.
+
+---
+
+### **10)**
+
+```c
+#include <stdio.h>
+int main() {
+    int x = 1, y = 2;
+    printf("%d%d", x);
+    return 0;
+}
+```
+
+**Output:** ❌ **Error**
+**Explanation:**
+`printf("%d%d", x);` — two `%d` but only one variable. Causes **undefined behavior or garbage value**.
+
+---
+
+### **11)**
+
+```c
+int x = 10, y = 20;
+int result = (x > y) ? ((x > 15) ? x : y) : ((y > 15) ? y : x);
+printf("%d", result);
+```
+
+**Output:** `20`
+**Explanation:**
+`x>y` false → go to second part → `(y>15)` true → prints `y = 20`.
+
+---
+
+### **12)**
+
+```c
+int a = 5, b = 0, c = 10;
+(a && b || c)?printf("True"):printf("False");
+```
+
+**Output:** `True`
+**Explanation:**
+`a&&b` → `0`, but `0||c` → `10 (true)` → prints `True`.
+
+---
+
+### **13)**
+
+**Question:** Which of the following is not a valid data type in C?
+✅ **Answer:** `string`
+**Explanation:** C doesn’t have `string` type; it uses character arrays.
+
+---
+
+### **14)**
+
+**Question:** Which header file is required for printf and scanf?
+✅ **Answer:** `stdio.h`
+**Explanation:** `stdio.h` = standard input/output header.
+
+---
+
+### **15)**
+
+```c
+#include<stdio.h>
+int main() {
+printf("%d ", 2 + 3 * 4 + 5 == 45);
+printf("%d ", 2 + 3 * 4 + 5 == 19);
+printf("%d ", (2 + 3) * (4 + 5) == 45);
+return 0;
+}
+```
+
+**Output:** `0 1 1`
+**Explanation:**
+`2+3*4+5=19` → not 45 → `0`
+`19==19` → `1`
+`(2+3)*(4+5)=45` → `1`.
+
+---
+
+### **Practical Questions**
+
+#### **Que 1: TV Selling Price Problem**
+
+**Output Example:**
+
+```
+Selling Price = 4445.00  
+Profit = 945.00  
+VAT = 564.52  
+Service Charge = 171.01  
+```
+
+**Explanation:**
+
+* Selling Price = 3500 + 27% of 3500 = 4445
+* Profit = 945
+* VAT = 12.7% of 4445 = 564.52
+* Service Charge = 3.87% of 4445 = 171.01
+
+---
+
+#### **Que 2: BookWorld Discount**
+
+**Sample Outputs:**
+
+* Input = 999 → Output = 999 (No discount)
+* Input = 2000 → Output = 1900 (5% discount)
+* Input = 10000 → Output = 9000 (10% discount)
+
+**Explanation:**
+Used ternary operator:
+
+```c
+(total < 1000) ? total : (total <= 5000 ? total*0.95 : total*0.9);
+```
+
+Discount changes based on range.
+
